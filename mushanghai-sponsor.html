@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tomás Deluca @ muShanghai 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0d0c0a;
+    --paper: #f5f0e8;
+    --warm: #f5f0e8;
+    --red: #c94b2b;
+    --gold: #c8963a;
+    --muted: #6b6459;
+    --border: rgba(13,12,10,0.12);
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NOISE TEXTURE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 9999; opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 20px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid var(--border);
+    background: rgba(245,240,232,0.92);
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: var(--font-mono);
+    font-size: 12px; letter-spacing: .15em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .nav-logo span { color: var(--red); }
+  .nav-cta {
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+    padding: 8px 20px;
+    border: 1px solid var(--ink);
+    text-decoration: none; color: var(--ink);
+    transition: all .2s;
+  }
+  .nav-cta:hover { background: var(--ink); color: var(--paper); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    padding: 140px 48px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    align-items: end;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-text {
+    position: absolute;
+    font-family: var(--font-display);
+    font-size: clamp(120px, 18vw, 260px);
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(13,12,10,0.06);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -.02em;
+  }
+
+  .hero-left { position: relative; z-index: 2; padding-bottom: 60px; }
+  .hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--red); margin-bottom: 24px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block; width: 32px; height: 1px; background: var(--red);
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(52px, 6vw, 88px);
+    font-weight: 700;
+    line-height: 1.0;
+    letter-spacing: -.02em;
+    margin-bottom: 32px;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--red);
+  }
+
+  .hero-lead {
+    font-size: 17px; line-height: 1.7;
+    color: var(--muted); max-width: 440px;
+    margin-bottom: 48px;
+  }
+
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .btn-primary {
+    padding: 14px 32px;
+    background: var(--ink); color: var(--paper);
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: .15em; text-transform: uppercase;
+    text-decoration: none;
+    transition: all .2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--red); }
+  .btn-secondary {
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none;
+    display: flex; align-items: center; gap: 8px;
+    transition: color .2s;
+  }
+  .btn-secondary:hover { color: var(--ink); }
+  .btn-secondary::after { content: '→'; }
+
+  .hero-right {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column;
+    align-items: flex-end; justify-content: flex-end;
+    padding-bottom: 60px; gap: 16px;
+  }
+
+  .stat-card {
+    border: 1px solid var(--border);
+    padding: 20px 28px;
+    background: rgba(245,240,232,0.7);
+    backdrop-filter: blur(8px);
+    min-width: 220px; text-align: right;
+  }
+  .stat-number {
+    font-family: var(--font-display);
+    font-size: 42px; font-weight: 700;
+    line-height: 1; margin-bottom: 4px;
+  }
+  .stat-label {
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: .15em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .stat-card.accent .stat-number { color: var(--red); }
+
+  /* SCROLLING TICKER */
+  .ticker {
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 0;
+    background: var(--ink);
+  }
+  .ticker-inner {
+    display: flex; gap: 0;
+    animation: ticker 20s linear infinite;
+    white-space: nowrap;
+  }
+  .ticker-item {
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--paper); opacity: 0.7;
+    padding: 0 32px;
+  }
+  .ticker-item span { color: var(--gold); margin-right: 32px; }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* SECTIONS */
+  section { padding: 100px 48px; border-bottom: 1px solid var(--border); }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 48px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .section-label::before {
+    content: attr(data-n);
+    color: var(--red); font-size: 9px;
+  }
+
+  /* SOBRE MI */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px; align-items: start;
+  }
+  .about-name {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -.02em;
+    margin-bottom: 20px;
+  }
+  .about-role {
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: .15em;
+    text-transform: uppercase; color: var(--red);
+    margin-bottom: 32px;
+  }
+  .about-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .about-text {
+    font-size: 18px; line-height: 1.8; color: var(--muted);
+    margin-bottom: 32px;
+  }
+  .about-text strong { color: var(--ink); font-weight: 500; }
+
+  /* QUE ES */
+  .event-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 80px; align-items: start;
+  }
+  .event-headline {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 3.5vw, 52px);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -.02em;
+    margin-bottom: 32px;
+  }
+  .event-headline em { font-style: italic; color: var(--red); }
+  .event-text { font-size: 16px; line-height: 1.8; color: var(--muted); margin-bottom: 48px; }
+
+  .weeks-list { display: flex; flex-direction: column; gap: 0; }
+  .week-item {
+    display: flex; gap: 24px; align-items: flex-start;
+    padding: 20px 0; border-bottom: 1px solid var(--border);
+  }
+  .week-item:first-child { border-top: 1px solid var(--border); }
+  .week-num {
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: .1em;
+    color: var(--red); min-width: 24px; padding-top: 2px;
+  }
+  .week-name { font-size: 15px; font-weight: 500; margin-bottom: 2px; }
+  .week-desc { font-size: 13px; color: var(--muted); }
+
+  .event-sidebar { position: sticky; top: 100px; }
+  .info-block {
+    border: 1px solid var(--border);
+    padding: 28px;
+    margin-bottom: 16px;
+  }
+  .info-block-label {
+    font-family: var(--font-mono);
+    font-size: 9px; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .info-block-value { font-size: 20px; font-weight: 500; }
+  .info-block-value.red { color: var(--red); }
+
+  /* LO QUE TRAIGO */
+  .deliverables-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 48px;
+  }
+  .deliverable {
+    background: var(--paper);
+    padding: 40px 32px;
+    transition: background .2s;
+  }
+  .deliverable:hover { background: var(--ink); }
+  .deliverable:hover .deliv-title { color: var(--paper); }
+  .deliverable:hover .deliv-desc { color: rgba(245,240,232,0.6); }
+  .deliverable:hover .deliv-icon { border-color: rgba(245,240,232,0.2); color: var(--gold); }
+  .deliv-icon {
+    width: 40px; height: 40px;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; margin-bottom: 24px;
+    transition: all .2s;
+  }
+  .deliv-title { font-size: 17px; font-weight: 500; margin-bottom: 8px; transition: color .2s; }
+  .deliv-desc { font-size: 14px; color: var(--muted); line-height: 1.6; transition: color .2s; }
+
+  /* PAQUETES */
+  .packages-intro {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3vw, 44px);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -.02em;
+    max-width: 600px; margin-bottom: 60px;
+  }
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .package {
+    border: 1px solid var(--border);
+    padding: 40px 32px;
+    position: relative;
+    transition: border-color .2s;
+  }
+  .package:hover { border-color: var(--ink); }
+  .package.featured {
+    border-color: var(--red);
+    background: var(--ink);
+  }
+  .package-badge {
+    position: absolute; top: -1px; left: 32px;
+    font-family: var(--font-mono);
+    font-size: 9px; letter-spacing: .15em; text-transform: uppercase;
+    padding: 4px 12px;
+    background: var(--red); color: var(--paper);
+  }
+  .package-name {
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: .15em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 16px;
+  }
+  .package.featured .package-name { color: rgba(245,240,232,0.5); }
+  .package-price {
+    font-family: var(--font-display);
+    font-size: 52px; font-weight: 700;
+    line-height: 1; margin-bottom: 4px;
+  }
+  .package.featured .package-price { color: var(--paper); }
+  .package-currency {
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: .1em;
+    color: var(--muted); margin-bottom: 32px;
+  }
+  .package.featured .package-currency { color: rgba(245,240,232,0.5); }
+  .package-features {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 12px;
+    margin-bottom: 40px;
+  }
+  .package-features li {
+    font-size: 14px; color: var(--muted);
+    display: flex; gap: 10px; align-items: flex-start;
+    line-height: 1.5;
+  }
+  .package.featured .package-features li { color: rgba(245,240,232,0.7); }
+  .package-features li::before {
+    content: '—'; color: var(--gold); flex-shrink: 0;
+  }
+  .pkg-btn {
+    display: block; width: 100%;
+    padding: 12px; text-align: center;
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: .15em; text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    color: var(--ink);
+    transition: all .2s;
+  }
+  .pkg-btn:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .package.featured .pkg-btn {
+    background: var(--red); color: var(--paper);
+    border-color: var(--red);
+  }
+  .package.featured .pkg-btn:hover { background: #a33a20; border-color: #a33a20; }
+
+  /* CONTACTO */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: start;
+  }
+  .contact-headline {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 4vw, 60px);
+    font-weight: 700; line-height: 1.05;
+    letter-spacing: -.02em; margin-bottom: 20px;
+  }
+  .contact-headline em { font-style: italic; color: var(--red); }
+  .contact-sub { font-size: 16px; color: var(--muted); line-height: 1.7; }
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-label {
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: .15em; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .form-input, .form-select, .form-textarea {
+    background: transparent;
+    border: 1px solid var(--border);
+    padding: 12px 16px;
+    font-family: var(--font-body);
+    font-size: 15px; color: var(--ink);
+    outline: none; transition: border-color .2s;
+    width: 100%;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--ink);
+  }
+  .form-textarea { resize: vertical; min-height: 100px; }
+  .form-select { appearance: none; cursor: pointer; }
+  .form-submit {
+    padding: 14px 32px;
+    background: var(--ink); color: var(--paper);
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: .15em; text-transform: uppercase;
+    border: none; cursor: pointer;
+    transition: background .2s; align-self: flex-start;
+  }
+  .form-submit:hover { background: var(--red); }
+
+  /* FOOTER */
+  footer {
+    padding: 40px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 22px; font-weight: 700;
+  }
+  .footer-logo span { color: var(--red); }
+  .footer-copy {
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: .1em;
+    color: var(--muted); text-align: right;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow { animation: fadeUp .6s ease both; }
+  .hero-title { animation: fadeUp .6s .1s ease both; }
+  .hero-lead { animation: fadeUp .6s .2s ease both; }
+  .hero-actions { animation: fadeUp .6s .3s ease both; }
+  .hero-right { animation: fadeUp .6s .25s ease both; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    section { padding: 72px 24px; }
+    .hero { padding: 120px 24px 64px; grid-template-columns: 1fr; }
+    .hero-right { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
+    .about-grid, .event-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .packages-grid { grid-template-columns: 1fr; }
+    .deliverables-grid { grid-template-columns: 1fr; }
+    .event-sidebar { position: static; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    footer { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">mu<span>Shanghai</span> · 2026</div>
+  <a href="#contacto" class="nav-cta">Ser sponsor</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-text">上海</div>
+  <div class="hero-left">
+    <div class="hero-eyebrow">Buenos Aires → Shanghái · 10 mayo 2026</div>
+    <h1 class="hero-title">
+      Construyendo<br>
+      el futuro<br>
+      <em>desde China.</em>
+    </h1>
+    <p class="hero-lead">
+      Soy Tomás Deluca — Huevo — founder de <a href="https://huevsite.com" target="_blank" style="color: var(--red); text-decoration: none; border-bottom: 1px solid currentColor;">huevsite.com</a>. En mayo 2026 voy a pasar 28 días en muShanghai — un hub de builders de IA, robótica y biotech en el corazón del ecosistema tech chino. Estoy buscando sponsors que quieran ser parte de este viaje.
+    </p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn-primary">Quiero ser sponsor</a>
+      <a href="#programa" class="btn-secondary">Ver el programa</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stat-card accent">
+      <div class="stat-number">28</div>
+      <div class="stat-label">Días en Shanghái</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">100+</div>
+      <div class="stat-label">Builders del mundo</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">4</div>
+      <div class="stat-label">Semanas temáticas</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item"><span>·</span> Inteligencia Artificial</span>
+    <span class="ticker-item"><span>·</span> Robótica</span>
+    <span class="ticker-item"><span>·</span> Biotecnología</span>
+    <span class="ticker-item"><span>·</span> Gaming & Web3</span>
+    <span class="ticker-item"><span>·</span> ZK Proofs</span>
+    <span class="ticker-item"><span>·</span> Founders chinos</span>
+    <span class="ticker-item"><span>·</span> muShanghai 2026</span>
+    <span class="ticker-item"><span>·</span> Inteligencia Artificial</span>
+    <span class="ticker-item"><span>·</span> Robótica</span>
+    <span class="ticker-item"><span>·</span> Biotecnología</span>
+    <span class="ticker-item"><span>·</span> Gaming & Web3</span>
+    <span class="ticker-item"><span>·</span> ZK Proofs</span>
+    <span class="ticker-item"><span>·</span> Founders chinos</span>
+    <span class="ticker-item"><span>·</span> muShanghai 2026</span>
+  </div>
+</div>
+
+<!-- SOBRE MI -->
+<section id="sobre-mi">
+  <div class="section-label" data-n="01">Quién soy</div>
+  <div class="about-grid">
+    <div>
+      <div class="about-name">Tomás<br>Deluca</div>
+      <div class="about-role">Founder — "Huevo"</div>
+      <div class="about-tags">
+        <span class="tag">IA / ML</span>
+        <span class="tag">Product</span>
+        <span class="tag">Startups</span>
+        <span class="tag">Buenos Aires</span>
+      </div>
+    </div>
+    <div>
+      <p class="about-text">
+        Soy founder con base en Buenos Aires, construyendo <a href="https://huevsite.com" target="_blank" style="color: var(--ink); border-bottom: 1px solid var(--border); text-decoration: none;"><strong>huevsite.com</strong></a> — una alternativa a Linktree para <strong>profesionales que quieren mostrar su trabajo de forma visualmente atractiva</strong>, con foco en armar ecosistema tech en Argentina y Latam.
+      </p>
+      <p class="about-text">
+        muShanghai no es solo un programa — es una oportunidad de estar <strong>28 días embedded en el ecosistema tech más dinámico del mundo</strong>, junto a builders que están construyendo el futuro desde China. Quiero llevarte conmigo.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- QUE ES -->
+<section id="programa">
+  <div class="section-label" data-n="02">El programa</div>
+  <div class="event-grid">
+    <div>
+      <h2 class="event-headline">
+        28 días viviendo<br>
+        en el <em>epicentro</em><br>
+        tech de China.
+      </h2>
+      <p class="event-text">
+        <a href="https://muShanghai.xyz" target="_blank" style="color: var(--ink); border-bottom: 1px solid var(--border); text-decoration: none; font-weight: 500;">muShanghai</a> es un pop-up village para builders de tecnología que se instala en Shanghái durante un mes. Parte de la red global the-mu — que ya pasó por Chiang Mai, Buenos Aires y Accra — este programa reúne founders, developers e investigadores en un espacio de trabajo, aprendizaje y networking intensivo.
+      </p>
+      <div class="weeks-list">
+        <div class="week-item">
+          <span class="week-num">W1</span>
+          <div>
+            <div class="week-name">Inteligencia Artificial</div>
+            <div class="week-desc">Aplicaciones, infraestructura y startups de IA en el ecosistema chino</div>
+          </div>
+        </div>
+        <div class="week-item">
+          <span class="week-num">W2</span>
+          <div>
+            <div class="week-name">Robótica & Biotecnología</div>
+            <div class="week-desc">Hardware, bio-engineering y las apuestas más ambiciosas del sector</div>
+          </div>
+        </div>
+        <div class="week-item">
+          <span class="week-num">W3</span>
+          <div>
+            <div class="week-name">Gaming & ZK / MPC</div>
+            <div class="week-desc">Bootcamp de zero-knowledge proofs, MPC y gaming onchain</div>
+          </div>
+        </div>
+        <div class="week-item">
+          <span class="week-num">W4</span>
+          <div>
+            <div class="week-name">Cultura & Demo Day</div>
+            <div class="week-desc">Tours tech, networking con fondos locales y presentación de proyectos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="event-sidebar">
+      <div class="info-block">
+        <div class="info-block-label">Inicio</div>
+        <div class="info-block-value">10 mayo 2026</div>
+      </div>
+      <div class="info-block">
+        <div class="info-block-label">Duración</div>
+        <div class="info-block-value">28 días</div>
+      </div>
+      <div class="info-block">
+        <div class="info-block-label">Ciudad</div>
+        <div class="info-block-value red">Shanghái, China</div>
+      </div>
+      <div class="info-block">
+        <div class="info-block-label">Comunidad</div>
+        <div class="info-block-value">100+ builders</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERABLES -->
+<section id="valor">
+  <div class="section-label" data-n="03">Lo que traés de vuelta</div>
+  <p style="font-size: 18px; color: var(--muted); max-width: 560px; line-height: 1.7;">
+    Como sponsor, no estás comprando visibilidad genérica. Estás invirtiendo en inteligencia de mercado real, conexiones directas y contenido generado desde adentro del ecosistema.
+  </p>
+  <div class="deliverables-grid">
+    <div class="deliverable">
+      <div class="deliv-icon">📊</div>
+      <div class="deliv-title">Reporte mensual</div>
+      <div class="deliv-desc">Análisis del ecosistema tech chino: startups, tendencias y oportunidades en IA, robótica y biotech. Sin intermediarios.</div>
+    </div>
+    <div class="deliverable">
+      <div class="deliv-icon">🤝</div>
+      <div class="deliv-title">Conexiones directas</div>
+      <div class="deliv-desc">Introducciones a founders, inversores y fondos del ecosistema chino. Relaciones que desde Buenos Aires llevarían años construir.</div>
+    </div>
+    <div class="deliverable">
+      <div class="deliv-icon">📢</div>
+      <div class="deliv-title">Visibilidad en redes</div>
+      <div class="deliv-desc">Menciones durante el programa en Instagram y TikTok, ante una comunidad tech activa y en crecimiento.</div>
+    </div>
+    <div class="deliverable">
+      <div class="deliv-icon">🎤</div>
+      <div class="deliv-title">Charla interna</div>
+      <div class="deliv-desc">Sesión de 60 minutos con el equipo de tu empresa al regreso, con todo lo aprendido en primera persona.</div>
+    </div>
+    <div class="deliverable">
+      <div class="deliv-icon">📄</div>
+      <div class="deliv-title">Contenido técnico</div>
+      <div class="deliv-desc">Posts, artículos o demos producidos durante el programa mostrando casos de uso reales con tus herramientas.</div>
+    </div>
+    <div class="deliverable">
+      <div class="deliv-icon">🗺️</div>
+      <div class="deliv-title">Mapa de oportunidades</div>
+      <div class="deliv-desc">Deal flow report con proyectos y startups relevantes del ecosistema para fondos e inversores interesados en Asia.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PAQUETES -->
+<section id="paquetes">
+  <div class="section-label" data-n="04">Paquetes de sponsorship</div>
+  <p class="packages-intro">Tres formas de<br>acompañar el viaje.</p>
+  <div class="packages-grid">
+
+    <div class="package">
+      <div class="package-name">Aliado</div>
+      <div class="package-price">1.000</div>
+      <div class="package-currency">USD — pago único</div>
+      <ul class="package-features">
+        <li>Reporte mensual del ecosistema</li>
+        <li>2 menciones en redes sociales</li>
+        <li>Logo en la web del proyecto</li>
+        <li>Acceso al newsletter post-viaje</li>
+      </ul>
+      <a href="#contacto" class="pkg-btn">Ser Aliado</a>
+    </div>
+
+    <div class="package featured">
+      <div class="package-badge">Recomendado</div>
+      <div class="package-name">Partner</div>
+      <div class="package-price" style="color: var(--gold);">3.000</div>
+      <div class="package-currency">USD — pago único</div>
+      <ul class="package-features">
+        <li>Todo lo del paquete Aliado</li>
+        <li>Intros a 3 fundadores o fondos chinos</li>
+        <li>Charla interna para tu equipo (60 min)</li>
+        <li>5 menciones en redes + contenido dedicado</li>
+        <li>Call mensual durante el programa</li>
+      </ul>
+      <a href="#contacto" class="pkg-btn">Ser Partner</a>
+    </div>
+
+    <div class="package">
+      <div class="package-name">Sponsor Principal</div>
+      <div class="package-price">5.000+</div>
+      <div class="package-currency">USD — negociable</div>
+      <ul class="package-features">
+        <li>Todo lo del paquete Partner</li>
+        <li>Co-branding en todo el contenido</li>
+        <li>Reporte de deal flow completo</li>
+        <li>Workshop o demo en el evento</li>
+        <li>Entregables 100% a medida</li>
+      </ul>
+      <a href="#contacto" class="pkg-btn">Hablemos</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="section-label" data-n="05">Contacto</div>
+  <div class="contact-grid">
+    <div>
+      <h2 class="contact-headline">
+        ¿Te sumás<br>al <em>viaje?</em>
+      </h2>
+      <p class="contact-sub">
+        Si tu empresa o fondo tiene interés en el ecosistema tech chino, en inteligencia de mercado de primera mano, o simplemente querés apoyar a un founder argentino que va a construir al otro lado del mundo — escribime. Los entregables son siempre negociables.
+      </p>
+    </div>
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-group">
+        <label class="form-label">Nombre y empresa</label>
+        <input type="text" class="form-input" placeholder="Ej: María García, Globant">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-input" placeholder="maria@empresa.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Paquete de interés</label>
+        <select class="form-select">
+          <option value="">Seleccioná un paquete</option>
+          <option>Aliado — USD 1.000</option>
+          <option>Partner — USD 3.000</option>
+          <option>Sponsor Principal — USD 5.000+</option>
+          <option>Quiero charlar primero</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Mensaje (opcional)</label>
+        <textarea class="form-textarea" placeholder="Contame qué te interesa del proyecto..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">Enviar consulta →</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">mu<span>Shanghai</span></div>
+  <div class="footer-copy">
+    Buenos Aires → Shanghái · 2026<br>
+    Un proyecto de Tomás Deluca
+  </div>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = '¡Mensaje enviado! ✓';
+    btn.style.background = '#2a7a4b';
+    btn.disabled = true;
+  }
+
+  // Intersection Observer for scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.style.opacity = '1';
+        el.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('section > *:not(.section-label)').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity .7s ease, transform .7s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
