@@ -65,6 +65,12 @@ nav {
   backdrop-filter: blur(12px);
 }
 
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
 .nav-logo {
   font-family: var(--font-mono);
   font-size: 12px;
@@ -76,6 +82,30 @@ nav {
 .nav-logo span,
 .footer-logo span {
   color: var(--red);
+}
+
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.language-option {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  padding: 8px 12px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.language-option.active {
+  background: var(--ink);
+  color: var(--paper);
 }
 
 .nav-cta,
@@ -872,6 +902,12 @@ footer {
     padding: 16px 24px;
   }
 
+  .nav-brand {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
   section {
     padding: 72px 24px;
   }
@@ -913,6 +949,11 @@ footer {
 }
 
 @media (max-width: 640px) {
+  nav {
+    gap: 12px;
+    align-items: flex-start;
+  }
+
   .hero-title,
   .contact-headline,
   .event-headline,
@@ -933,6 +974,11 @@ footer {
   .btn-primary,
   .form-submit {
     width: 100%;
+    text-align: center;
+  }
+
+  .nav-cta {
+    align-self: stretch;
     text-align: center;
   }
 }

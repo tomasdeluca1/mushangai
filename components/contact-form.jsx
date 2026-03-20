@@ -9,7 +9,7 @@ const initialState = {
   message: "",
 };
 
-export function ContactForm() {
+export function ContactForm({ language, copy }) {
   const [formData, setFormData] = useState(initialState);
   const [status, setStatus] = useState({ type: "idle", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -30,18 +30,18 @@ export function ContactForm() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, language }),
       });
 
       const payload = await response.json();
 
       if (!response.ok) {
-        throw new Error(payload.error || "The message could not be sent.");
+        throw new Error(payload.error || copy.errors.invalidMessage);
       }
 
       setStatus({
         type: "success",
-        message: "Inquiry sent. I'll get back to you by email soon.",
+        message: copy.success,
       });
       setFormData(initialState);
     } catch (error) {
@@ -50,7 +50,7 @@ export function ContactForm() {
         message:
           error instanceof Error
             ? error.message
-            : "There was a problem sending the form.",
+            : copy.fallbackError,
       });
     } finally {
       setIsSubmitting(false);
@@ -61,14 +61,14 @@ export function ContactForm() {
     <form className="contact-form" onSubmit={handleSubmit}>
       <div className="form-group">
         <label className="form-label" htmlFor="name">
-          Name and company
+          {copy.nameLabel}
         </label>
         <input
           id="name"
           name="name"
           type="text"
           className="form-input"
-          placeholder="Ex: Maria Garcia, Globant"
+          placeholder={copy.namePlaceholder}
           value={formData.name}
           onChange={handleChange}
           required
@@ -77,14 +77,14 @@ export function ContactForm() {
 
       <div className="form-group">
         <label className="form-label" htmlFor="email">
-          Email
+          {copy.emailLabel}
         </label>
         <input
           id="email"
           name="email"
           type="email"
           className="form-input"
-          placeholder="maria@empresa.com"
+          placeholder={copy.emailPlaceholder}
           value={formData.email}
           onChange={handleChange}
           required
@@ -93,7 +93,7 @@ export function ContactForm() {
 
       <div className="form-group">
         <label className="form-label" htmlFor="packageInterest">
-          Package of interest
+          {copy.packageLabel}
         </label>
         <select
           id="packageInterest"
@@ -103,32 +103,31 @@ export function ContactForm() {
           onChange={handleChange}
           required
         >
-          <option value="">Select a package</option>
-          <option value="Ally — USD 1,000">Ally — USD 1,000</option>
-          <option value="Partner — USD 3.000">Partner — USD 3.000</option>
-          <option value="Lead Sponsor — USD 5,000+">
-            Lead Sponsor — USD 5,000+
-          </option>
-          <option value="I want to talk first">I want to talk first</option>
+          <option value="">{copy.packagePlaceholder}</option>
+          {copy.packages.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
         </select>
       </div>
 
       <div className="form-group">
         <label className="form-label" htmlFor="message">
-          Message (optional)
+          {copy.messageLabel}
         </label>
         <textarea
           id="message"
           name="message"
           className="form-textarea"
-          placeholder="Tell me what interests you about the project..."
+          placeholder={copy.messagePlaceholder}
           value={formData.message}
           onChange={handleChange}
         />
       </div>
 
       <button type="submit" className="form-submit" disabled={isSubmitting}>
-        {isSubmitting ? "Sending..." : "Send inquiry →"}
+        {isSubmitting ? copy.sending : copy.submit}
       </button>
 
       {status.message ? (

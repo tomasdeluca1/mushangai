@@ -1,4 +1,5 @@
 import { Resend } from "resend";
+import { defaultLanguage, getTranslation } from "../../../lib/translations";
 
 const resendApiKey = process.env.RESEND_API_KEY;
 const contactToEmail =
@@ -24,6 +25,8 @@ function escapeHtml(value) {
 export async function POST(request) {
   try {
     const body = await request.json();
+    const language = body?.language || defaultLanguage;
+    const copy = getTranslation(language).form;
     const name = body?.name?.trim();
     const email = body?.email?.trim();
     const packageInterest = body?.packageInterest?.trim();
@@ -31,14 +34,14 @@ export async function POST(request) {
 
     if (!name || !email || !packageInterest) {
       return Response.json(
-        { error: "Please fill in your name, email, and package of interest." },
+        { error: copy.errors.missingFields },
         { status: 400 },
       );
     }
 
     if (!isValidEmail(email)) {
       return Response.json(
-        { error: "Please enter a valid email address." },
+        { error: copy.errors.invalidEmail },
         { status: 400 },
       );
     }
@@ -46,7 +49,7 @@ export async function POST(request) {
     if (!resend) {
       return Response.json(
         {
-          error: "RESEND_API_KEY must be configured to enable the contact form.",
+          error: copy.errors.missingApiKey,
         },
         { status: 500 },
       );
@@ -56,23 +59,23 @@ export async function POST(request) {
       from: `muShanghai 2026 <${contactFromEmail}>`,
       to: [contactToEmail],
       replyTo: email,
-      subject: `New sponsorship inquiry: ${name}`,
+      subject: `${copy.emailCopy.subjectPrefix}: ${name}`,
       text: [
-        `Name and company: ${name}`,
+        `${copy.emailCopy.nameLabel}: ${name}`,
         `Email: ${email}`,
-        `Package of interest: ${packageInterest}`,
+        `${copy.emailCopy.packageLabel}: ${packageInterest}`,
         "",
-        "Message:",
-        message || "No additional message.",
+        `${copy.emailCopy.messageLabel}:`,
+        message || copy.emailCopy.noMessage,
       ].join("\n"),
       html: `
         <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #111;">
-          <h2>New inquiry from the muShanghai 2026 landing page</h2>
-          <p><strong>Name and company:</strong> ${escapeHtml(name)}</p>
+          <h2>${escapeHtml(copy.emailCopy.title)}</h2>
+          <p><strong>${escapeHtml(copy.emailCopy.nameLabel)}:</strong> ${escapeHtml(name)}</p>
           <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-          <p><strong>Package of interest:</strong> ${escapeHtml(packageInterest)}</p>
-          <p><strong>Message:</strong></p>
-          <p>${escapeHtml(message || "No additional message.").replace(/\n/g, "<br />")}</p>
+          <p><strong>${escapeHtml(copy.emailCopy.packageLabel)}:</strong> ${escapeHtml(packageInterest)}</p>
+          <p><strong>${escapeHtml(copy.emailCopy.messageLabel)}:</strong></p>
+          <p>${escapeHtml(message || copy.emailCopy.noMessage).replace(/\n/g, "<br />")}</p>
         </div>
       `,
     });
@@ -84,7 +87,7 @@ export async function POST(request) {
         error:
           error instanceof Error
             ? error.message
-            : "The form could not be processed.",
+            : copy.errors.processing,
       },
       { status: 500 },
     );
