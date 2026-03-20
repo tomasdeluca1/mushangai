@@ -31,14 +31,14 @@ export async function POST(request) {
 
     if (!name || !email || !packageInterest) {
       return Response.json(
-        { error: "Completá nombre, email y paquete de interés." },
+        { error: "Please fill in your name, email, and package of interest." },
         { status: 400 },
       );
     }
 
     if (!isValidEmail(email)) {
       return Response.json(
-        { error: "Ingresá un email válido." },
+        { error: "Please enter a valid email address." },
         { status: 400 },
       );
     }
@@ -46,8 +46,7 @@ export async function POST(request) {
     if (!resend) {
       return Response.json(
         {
-          error:
-            "Falta configurar RESEND_API_KEY para habilitar el formulario.",
+          error: "RESEND_API_KEY must be configured to enable the contact form.",
         },
         { status: 500 },
       );
@@ -57,23 +56,23 @@ export async function POST(request) {
       from: `muShanghai 2026 <${contactFromEmail}>`,
       to: [contactToEmail],
       replyTo: email,
-      subject: `Nueva consulta sponsor: ${name}`,
+      subject: `New sponsorship inquiry: ${name}`,
       text: [
-        `Nombre y empresa: ${name}`,
+        `Name and company: ${name}`,
         `Email: ${email}`,
-        `Paquete de interés: ${packageInterest}`,
+        `Package of interest: ${packageInterest}`,
         "",
-        "Mensaje:",
-        message || "Sin mensaje adicional.",
+        "Message:",
+        message || "No additional message.",
       ].join("\n"),
       html: `
         <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #111;">
-          <h2>Nueva consulta desde la landing de muShanghai 2026</h2>
-          <p><strong>Nombre y empresa:</strong> ${escapeHtml(name)}</p>
+          <h2>New inquiry from the muShanghai 2026 landing page</h2>
+          <p><strong>Name and company:</strong> ${escapeHtml(name)}</p>
           <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-          <p><strong>Paquete de interés:</strong> ${escapeHtml(packageInterest)}</p>
-          <p><strong>Mensaje:</strong></p>
-          <p>${escapeHtml(message || "Sin mensaje adicional.").replace(/\n/g, "<br />")}</p>
+          <p><strong>Package of interest:</strong> ${escapeHtml(packageInterest)}</p>
+          <p><strong>Message:</strong></p>
+          <p>${escapeHtml(message || "No additional message.").replace(/\n/g, "<br />")}</p>
         </div>
       `,
     });
@@ -85,7 +84,7 @@ export async function POST(request) {
         error:
           error instanceof Error
             ? error.message
-            : "No se pudo procesar el formulario.",
+            : "The form could not be processed.",
       },
       { status: 500 },
     );

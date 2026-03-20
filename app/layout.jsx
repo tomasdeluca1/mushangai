@@ -3,12 +3,12 @@ import "./globals.css";
 export const metadata = {
   title: "Tomás Deluca @ muShanghai 2026",
   description:
-    "Landing de sponsorship para acompañar el viaje de Tomás Deluca a muShanghai 2026.",
+    "Sponsorship landing page for Tomás Deluca's muShanghai 2026 journey.",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="es">
+    <html lang="en">
       <body>{children}</body>
     </html>
   );

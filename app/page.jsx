@@ -1,120 +1,120 @@
 import { ContactForm } from "../components/contact-form";
 
 const tickerItems = [
-  "Inteligencia Artificial",
-  "Robótica",
-  "Biotecnología",
+  "Artificial Intelligence",
+  "Robotics",
+  "Biotechnology",
   "Gaming & Web3",
   "ZK Proofs",
-  "Founders chinos",
+  "Chinese founders",
   "muShanghai 2026",
 ];
 
 const weeks = [
   {
     number: "W1",
-    title: "Inteligencia Artificial",
+    title: "Artificial Intelligence",
     description:
-      "Aplicaciones, infraestructura y startups de IA en el ecosistema chino",
+      "Applications, infrastructure, and AI startups across the Chinese ecosystem",
   },
   {
     number: "W2",
-    title: "Robótica & Biotecnología",
+    title: "Robotics & Biotechnology",
     description:
-      "Hardware, bio-engineering y las apuestas más ambiciosas del sector",
+      "Hardware, bio-engineering, and the sector's most ambitious bets",
   },
   {
     number: "W3",
     title: "Gaming & ZK / MPC",
     description:
-      "Bootcamp de zero-knowledge proofs, MPC y gaming onchain",
+      "Bootcamp on zero-knowledge proofs, MPC, and onchain gaming",
   },
   {
     number: "W4",
-    title: "Cultura & Demo Day",
+    title: "Culture & Demo Day",
     description:
-      "Tours tech, networking con fondos locales y presentación de proyectos",
+      "Tech tours, networking with local funds, and project presentations",
   },
 ];
 
 const deliverables = [
   {
     icon: "01",
-    title: "Reporte mensual",
+    title: "Monthly report",
     description:
-      "Análisis del ecosistema tech chino: startups, tendencias y oportunidades en IA, robótica y biotech. Sin intermediarios.",
+      "A direct analysis of the Chinese tech ecosystem: startups, trends, and opportunities in AI, robotics, and biotech.",
   },
   {
     icon: "02",
-    title: "Conexiones directas",
+    title: "Direct connections",
     description:
-      "Introducciones a founders, inversores y fondos del ecosistema chino. Relaciones que desde Buenos Aires llevarían años construir.",
+      "Introductions to founders, investors, and funds inside the Chinese ecosystem. Relationships that would take years to build from Buenos Aires.",
   },
   {
     icon: "03",
-    title: "Visibilidad en redes",
+    title: "Social visibility",
     description:
-      "Menciones durante el programa en Instagram y TikTok, ante una comunidad tech activa y en crecimiento.",
+      "Mentions throughout the program on Instagram and TikTok, in front of an active and growing tech audience.",
   },
   {
     icon: "04",
-    title: "Charla interna",
+    title: "Private debrief",
     description:
-      "Sesión de 60 minutos con el equipo de tu empresa al regreso, con todo lo aprendido en primera persona.",
+      "A 60-minute session with your team after I return, sharing everything learned firsthand.",
   },
   {
     icon: "05",
-    title: "Contenido técnico",
+    title: "Technical content",
     description:
-      "Posts, artículos o demos producidos durante el programa mostrando casos de uso reales con tus herramientas.",
+      "Posts, articles, or demos produced during the program showing real use cases with your tools.",
   },
   {
     icon: "06",
-    title: "Mapa de oportunidades",
+    title: "Opportunity map",
     description:
-      "Deal flow report con proyectos y startups relevantes del ecosistema para fondos e inversores interesados en Asia.",
+      "A deal flow report with projects and startups relevant to funds and investors interested in Asia.",
   },
 ];
 
 const packages = [
   {
-    name: "Aliado",
-    price: "1.000",
-    currency: "USD — pago único",
+    name: "Ally",
+    price: "1,000",
+    currency: "USD — one-time payment",
     features: [
-      "Reporte mensual del ecosistema",
-      "2 menciones en redes sociales",
-      "Logo en la web del proyecto",
-      "Acceso al newsletter post-viaje",
+      "Monthly ecosystem report",
+      "2 social media mentions",
+      "Logo on the project website",
+      "Access to the post-trip newsletter",
     ],
-    cta: "Ser Aliado",
+    cta: "Become an Ally",
   },
   {
     name: "Partner",
-    price: "3.000",
-    currency: "USD — pago único",
+    price: "3,000",
+    currency: "USD — one-time payment",
     features: [
-      "Todo lo del paquete Aliado",
-      "Intros a 3 fundadores o fondos chinos",
-      "Charla interna para tu equipo (60 min)",
-      "5 menciones en redes + contenido dedicado",
-      "Call mensual durante el programa",
+      "Everything in the Ally package",
+      "Introductions to 3 Chinese founders or funds",
+      "Private team debrief (60 min)",
+      "5 social mentions + dedicated content",
+      "Monthly call during the program",
     ],
-    cta: "Ser Partner",
+    cta: "Become a Partner",
     featured: true,
   },
   {
-    name: "Sponsor Principal",
-    price: "5.000+",
-    currency: "USD — negociable",
+    name: "Lead Sponsor",
+    price: "5,000+",
+    currency: "USD — negotiable",
     features: [
-      "Todo lo del paquete Partner",
-      "Co-branding en todo el contenido",
-      "Reporte de deal flow completo",
-      "Workshop o demo en el evento",
-      "Entregables 100% a medida",
+      "Everything in the Partner package",
+      "Co-branding across all content",
+      "Full deal flow report",
+      "Workshop or demo at the event",
+      "100% custom deliverables",
     ],
-    cta: "Hablemos",
+    cta: "Let's talk",
   },
 ];
 
@@ -125,8 +125,8 @@ export default function HomePage() {
         <div className="nav-logo">
           mu<span>Shanghai</span> · 2026
         </div>
-        <a href="#contacto" className="nav-cta">
-          Ser sponsor
+        <a href="#contact" className="nav-cta">
+          Become a sponsor
         </a>
       </nav>
 
@@ -134,44 +134,45 @@ export default function HomePage() {
         <section className="hero">
           <div className="hero-bg-text">上海</div>
           <div className="hero-left">
-            <div className="hero-eyebrow">Buenos Aires → Shanghái · 10 mayo 2026</div>
+            <div className="hero-eyebrow">Buenos Aires → Shanghai · May 10, 2026</div>
             <h1 className="hero-title">
-              Construyendo
+              Building
               <br />
-              el futuro
+              the future
               <br />
-              <em>desde China.</em>
+              <em>from China.</em>
             </h1>
             <p className="hero-lead">
-              Soy Tomás Deluca — Huevo — founder de{" "}
+              I'm Tomás Deluca — Huevo — founder of{" "}
               <a href="https://huevsite.com" target="_blank" rel="noreferrer">
                 huevsite.com
               </a>
-              . En mayo 2026 voy a pasar 28 días en muShanghai — un hub de builders
-              de IA, robótica y biotech en el corazón del ecosistema tech chino.
-              Estoy buscando sponsors que quieran ser parte de este viaje.
+              . In May 2026, I'll spend 28 days at muShanghai — a hub for AI,
+              robotics, and biotech builders in the heart of the Chinese tech
+              ecosystem. I'm looking for sponsors who want to be part of this
+              journey.
             </p>
             <div className="hero-actions">
-              <a href="#contacto" className="btn-primary">
-                Quiero ser sponsor
+              <a href="#contact" className="btn-primary">
+                I want to sponsor
               </a>
-              <a href="#programa" className="btn-secondary">
-                Ver el programa
+              <a href="#program" className="btn-secondary">
+                View the program
               </a>
             </div>
           </div>
           <div className="hero-right">
             <div className="stat-card accent">
               <div className="stat-number">28</div>
-              <div className="stat-label">Días en Shanghái</div>
+              <div className="stat-label">Days in Shanghai</div>
             </div>
             <div className="stat-card">
               <div className="stat-number">100+</div>
-              <div className="stat-label">Builders del mundo</div>
+              <div className="stat-label">Builders worldwide</div>
             </div>
             <div className="stat-card">
               <div className="stat-number">4</div>
-              <div className="stat-label">Semanas temáticas</div>
+              <div className="stat-label">Thematic weeks</div>
             </div>
           </div>
         </section>
@@ -187,9 +188,9 @@ export default function HomePage() {
           </div>
         </div>
 
-        <section id="sobre-mi">
+        <section id="about">
           <div className="section-label" data-n="01">
-            Quién soy
+            Who I am
           </div>
           <div className="about-grid reveal-grid">
             <div>
@@ -200,7 +201,7 @@ export default function HomePage() {
               </div>
               <div className="about-role">Founder — "Huevo"</div>
               <div className="about-tags">
-                <span className="tag">IA / ML</span>
+                <span className="tag">AI / ML</span>
                 <span className="tag">Product</span>
                 <span className="tag">Startups</span>
                 <span className="tag">Buenos Aires</span>
@@ -208,51 +209,53 @@ export default function HomePage() {
             </div>
             <div>
               <p className="about-text">
-                Soy founder con base en Buenos Aires, construyendo{" "}
+                I'm a Buenos Aires-based founder building{" "}
                 <a href="https://huevsite.com" target="_blank" rel="noreferrer">
                   <strong>huevsite.com</strong>
                 </a>{" "}
-                — una alternativa a Linktree para{" "}
+                — a Linktree alternative for{" "}
                 <strong>
-                  profesionales que quieren mostrar su trabajo de forma visualmente
-                  atractiva
+                  professionals who want to present their work in a visually
+                  compelling way
                 </strong>
-                , con foco en armar ecosistema tech en Argentina y Latam.
+                , with a focus on building a stronger tech ecosystem across
+                Argentina and LatAm.
               </p>
               <p className="about-text">
-                muShanghai no es solo un programa — es una oportunidad de estar{" "}
+                muShanghai is more than a program — it's a chance to spend{" "}
                 <strong>
-                  28 días embedded en el ecosistema tech más dinámico del mundo
+                  28 days embedded in one of the most dynamic tech ecosystems in
+                  the world
                 </strong>
-                , junto a builders que están construyendo el futuro desde China.
-                Quiero llevarte conmigo.
+                , alongside builders shaping the future from China. I want to
+                bring you with me.
               </p>
             </div>
           </div>
         </section>
 
-        <section id="programa">
+        <section id="program">
           <div className="section-label" data-n="02">
-            El programa
+            The program
           </div>
           <div className="event-grid reveal-grid">
             <div>
               <h2 className="event-headline">
-                28 días viviendo
+                28 days living
                 <br />
-                en el <em>epicentro</em>
+                in the <em>epicenter</em>
                 <br />
-                tech de China.
+                of China's tech scene.
               </h2>
               <p className="event-text">
                 <a href="https://muShanghai.xyz" target="_blank" rel="noreferrer">
                   muShanghai
                 </a>{" "}
-                es un pop-up village para builders de tecnología que se instala en
-                Shanghái durante un mes. Parte de la red global the-mu — que ya pasó
-                por Chiang Mai, Buenos Aires y Accra — este programa reúne founders,
-                developers e investigadores en un espacio de trabajo, aprendizaje y
-                networking intensivo.
+                is a pop-up village for technology builders that takes over
+                Shanghai for a month. Part of the global the-mu network — which
+                has already landed in Chiang Mai, Buenos Aires, and Accra — the
+                program brings founders, developers, and researchers together in
+                a space built for work, learning, and intense networking.
               </p>
               <div className="weeks-list">
                 {weeks.map((week) => (
@@ -268,33 +271,33 @@ export default function HomePage() {
             </div>
             <aside className="event-sidebar">
               <div className="info-block">
-                <div className="info-block-label">Inicio</div>
-                <div className="info-block-value">10 mayo 2026</div>
+                <div className="info-block-label">Start</div>
+                <div className="info-block-value">May 10, 2026</div>
               </div>
               <div className="info-block">
-                <div className="info-block-label">Duración</div>
-                <div className="info-block-value">28 días</div>
+                <div className="info-block-label">Duration</div>
+                <div className="info-block-value">28 days</div>
               </div>
               <div className="info-block">
-                <div className="info-block-label">Ciudad</div>
-                <div className="info-block-value red">Shanghái, China</div>
+                <div className="info-block-label">City</div>
+                <div className="info-block-value red">Shanghai, China</div>
               </div>
               <div className="info-block">
-                <div className="info-block-label">Comunidad</div>
+                <div className="info-block-label">Community</div>
                 <div className="info-block-value">100+ builders</div>
               </div>
             </aside>
           </div>
         </section>
 
-        <section id="valor">
+        <section id="value">
           <div className="section-label" data-n="03">
-            Lo que traés de vuelta
+            What comes back with you
           </div>
           <p className="section-intro">
-            Como sponsor, no estás comprando visibilidad genérica. Estás invirtiendo
-            en inteligencia de mercado real, conexiones directas y contenido
-            generado desde adentro del ecosistema.
+            As a sponsor, you're not buying generic visibility. You're investing
+            in real market intelligence, direct connections, and content created
+            from inside the ecosystem itself.
           </p>
           <div className="deliverables-grid">
             {deliverables.map((item) => (
@@ -307,14 +310,14 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="paquetes">
+        <section id="packages">
           <div className="section-label" data-n="04">
-            Paquetes de sponsorship
+            Sponsorship packages
           </div>
           <p className="packages-intro">
-            Tres formas de
+            Three ways to
             <br />
-            acompañar el viaje.
+            back the journey.
           </p>
           <div className="packages-grid">
             {packages.map((pkg) => (
@@ -322,7 +325,7 @@ export default function HomePage() {
                 className={`package${pkg.featured ? " featured" : ""}`}
                 key={pkg.name}
               >
-                {pkg.featured ? <div className="package-badge">Recomendado</div> : null}
+                {pkg.featured ? <div className="package-badge">Recommended</div> : null}
                 <div className="package-name">{pkg.name}</div>
                 <div className="package-price">{pkg.price}</div>
                 <div className="package-currency">{pkg.currency}</div>
@@ -331,7 +334,7 @@ export default function HomePage() {
                     <li key={feature}>{feature}</li>
                   ))}
                 </ul>
-                <a href="#contacto" className="pkg-btn">
+                <a href="#contact" className="pkg-btn">
                   {pkg.cta}
                 </a>
               </article>
@@ -339,22 +342,22 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="contacto">
+        <section id="contact">
           <div className="section-label" data-n="05">
-            Contacto
+            Contact
           </div>
           <div className="contact-grid reveal-grid">
             <div>
               <h2 className="contact-headline">
-                ¿Te sumás
+                Want to join
                 <br />
-                al <em>viaje?</em>
+                the <em>journey?</em>
               </h2>
               <p className="contact-sub">
-                Si tu empresa o fondo tiene interés en el ecosistema tech chino, en
-                inteligencia de mercado de primera mano, o simplemente querés apoyar
-                a un founder argentino que va a construir al otro lado del mundo —
-                escribime. Los entregables son siempre negociables.
+                If your company or fund is interested in China's tech ecosystem,
+                firsthand market intelligence, or simply wants to back an
+                Argentine founder building on the other side of the world — send
+                me a note. Deliverables are always negotiable.
               </p>
             </div>
             <ContactForm />
@@ -367,9 +370,9 @@ export default function HomePage() {
           mu<span>Shanghai</span>
         </div>
         <div className="footer-copy">
-          Buenos Aires → Shanghái · 2026
+          Buenos Aires → Shanghai · 2026
           <br />
-          Un proyecto de Tomás Deluca
+          A project by Tomás Deluca
         </div>
       </footer>
     </>

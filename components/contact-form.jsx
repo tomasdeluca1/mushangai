@@ -36,12 +36,12 @@ export function ContactForm() {
       const payload = await response.json();
 
       if (!response.ok) {
-        throw new Error(payload.error || "No se pudo enviar el mensaje.");
+        throw new Error(payload.error || "The message could not be sent.");
       }
 
       setStatus({
         type: "success",
-        message: "Consulta enviada. Te respondo pronto por email.",
+        message: "Inquiry sent. I'll get back to you by email soon.",
       });
       setFormData(initialState);
     } catch (error) {
@@ -50,7 +50,7 @@ export function ContactForm() {
         message:
           error instanceof Error
             ? error.message
-            : "Hubo un problema enviando el formulario.",
+            : "There was a problem sending the form.",
       });
     } finally {
       setIsSubmitting(false);
@@ -61,14 +61,14 @@ export function ContactForm() {
     <form className="contact-form" onSubmit={handleSubmit}>
       <div className="form-group">
         <label className="form-label" htmlFor="name">
-          Nombre y empresa
+          Name and company
         </label>
         <input
           id="name"
           name="name"
           type="text"
           className="form-input"
-          placeholder="Ej: María García, Globant"
+          placeholder="Ex: Maria Garcia, Globant"
           value={formData.name}
           onChange={handleChange}
           required
@@ -93,7 +93,7 @@ export function ContactForm() {
 
       <div className="form-group">
         <label className="form-label" htmlFor="packageInterest">
-          Paquete de interés
+          Package of interest
         </label>
         <select
           id="packageInterest"
@@ -103,32 +103,32 @@ export function ContactForm() {
           onChange={handleChange}
           required
         >
-          <option value="">Seleccioná un paquete</option>
-          <option value="Aliado — USD 1.000">Aliado — USD 1.000</option>
+          <option value="">Select a package</option>
+          <option value="Ally — USD 1,000">Ally — USD 1,000</option>
           <option value="Partner — USD 3.000">Partner — USD 3.000</option>
-          <option value="Sponsor Principal — USD 5.000+">
-            Sponsor Principal — USD 5.000+
+          <option value="Lead Sponsor — USD 5,000+">
+            Lead Sponsor — USD 5,000+
           </option>
-          <option value="Quiero charlar primero">Quiero charlar primero</option>
+          <option value="I want to talk first">I want to talk first</option>
         </select>
       </div>
 
       <div className="form-group">
         <label className="form-label" htmlFor="message">
-          Mensaje (opcional)
+          Message (optional)
         </label>
         <textarea
           id="message"
           name="message"
           className="form-textarea"
-          placeholder="Contame qué te interesa del proyecto..."
+          placeholder="Tell me what interests you about the project..."
           value={formData.message}
           onChange={handleChange}
         />
       </div>
 
       <button type="submit" className="form-submit" disabled={isSubmitting}>
-        {isSubmitting ? "Enviando..." : "Enviar consulta →"}
+        {isSubmitting ? "Sending..." : "Send inquiry →"}
       </button>
 
       {status.message ? (
