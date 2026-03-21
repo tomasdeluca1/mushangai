@@ -1,0 +1,48 @@
+# Full details of Tomás Deluca's muShanghai 2026 Journey
+
+## Introduction
+Tomás Deluca (also known as Huevo), is a tech founder based in Buenos Aires, Argentina. He is the founder of huevsite.io (the space for tech builders) and huevsite.studio (web and AI solutions).
+
+In May 2026, he is traveling to muShanghai, a pop-up village for technology builders that takes over Shanghai for a month.
+
+## The Journey: muShanghai 2026
+- **Dates:** May 10th - June 7th, 2026.
+- **Duration:** 28 days.
+- **Location:** Shanghai, China.
+- **Focus Areas:** AI, Robotics, Biotechnology, Gaming & Web3, ZK Proofs.
+- **Community:** Joining 100+ global builders, researchers, and founders.
+
+## Sponsorship Packages Detail
+
+### Ally Package (USD 1,000)
+- Monthly ecosystem report.
+- 2 social media mentions.
+- Logo on the website.
+- Access to the post-trip newsletter.
+
+### Partner Package (USD 3,000)
+- Everything in Ally.
+- Introductions to 3 Chinese founders or funds.
+- Private team debrief (60 min session).
+- Social package: 1 reel from Shanghai + 2 LinkedIn posts + 1 X thread + 1 collaborative story sequence.
+- Monthly call during the program.
+
+### Lead Sponsor Package (USD 5,000+)
+- Everything in Partner.
+- Full co-branding across all content.
+- Complete deal flow report.
+- Workshop or demo at the event.
+- 100% custom deliverables.
+
+## What is muShanghai?
+muShanghai is a pop-up village for technology builders that takes over Shanghai for a month. Part of the global the-mu network (previously in Chiang Mai, Buenos Aires, and Accra), it brings founders, developers, and researchers together for intense learning and networking.
+
+## Why Sponsor?
+- **Intelligence:** Direct analysis of the Chinese tech ecosystem (AI, robotics, biotech).
+- **Network:** Access to founders and investors that would takes years to build connections with.
+- **Visibility:** High-quality content (Reels, LinkedIn, X) with your branding from the heart of Shanghai.
+
+## Technical Details
+- Built with: Next.js 15, React 19, Resend (for emails).
+- Mobile-responsive landing page.
+- Multilingual: Spanish, English, Chinese.

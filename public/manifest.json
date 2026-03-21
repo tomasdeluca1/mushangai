@@ -1,0 +1,16 @@
+{
+  "name": "Tomás Deluca @ muShanghai 2026",
+  "short_name": "muShanghai 2026",
+  "description": "Sponsorship landing page for Tomás Deluca's muShanghai 2026 journey.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#ff3b30",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
