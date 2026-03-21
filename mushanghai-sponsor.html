@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tomás Deluca @ muShanghai 2026</title>
+<link rel="icon" type="image/svg+xml" href="./public/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -246,6 +247,52 @@
     margin-bottom: 32px;
   }
   .about-text strong { color: var(--ink); font-weight: 500; }
+  .proof-strip {
+    border-top: 1px solid var(--border);
+    padding-top: 28px;
+  }
+  .proof-intro, .branded-note, .branded-audience {
+    color: var(--muted);
+  }
+  .proof-intro {
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .proof-links, .proof-example-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .proof-link, .proof-example {
+    border: 1px solid var(--border);
+    padding: 16px 18px;
+    text-decoration: none;
+    background: rgba(255,255,255,0.35);
+    transition: border-color .2s, transform .2s, background .2s;
+  }
+  .proof-link:hover, .proof-example:hover {
+    border-color: var(--ink);
+    background: rgba(255,255,255,0.7);
+    transform: translateY(-1px);
+  }
+  .proof-link span, .proof-example span, .proof-examples-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+  .proof-link span, .proof-example span {
+    margin-bottom: 6px;
+  }
+  .proof-link small, .proof-example small {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .proof-examples { margin-top: 20px; }
+  .proof-examples-label { color: var(--red); margin-bottom: 12px; }
 
   /* QUE ES */
   .event-grid {
@@ -310,6 +357,73 @@
   .deliverable:hover .deliv-title { color: var(--paper); }
   .deliverable:hover .deliv-desc { color: rgba(245,240,232,0.6); }
   .deliverable:hover .deliv-icon { border-color: rgba(245,240,232,0.2); color: var(--gold); }
+  .branded-grid {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .branded-card {
+    position: relative;
+    border: 1px solid var(--red);
+    background: linear-gradient(180deg, rgba(201,75,43,0.08), rgba(13,12,10,0.98)), var(--ink);
+    color: var(--paper);
+    padding: 56px 32px 32px;
+    overflow: hidden;
+  }
+  .branded-card::after {
+    content: '';
+    position: absolute;
+    inset: auto -10% 60% 20%;
+    height: 160px;
+    background: radial-gradient(circle, rgba(200,150,58,0.22), transparent 65%);
+    pointer-events: none;
+  }
+  .branded-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+  }
+  .branded-list li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    color: rgba(245,240,232,0.8);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+  .branded-list li::before {
+    content: '↗';
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+  .branded-note {
+    font-size: 17px;
+    line-height: 1.7;
+    margin-top: 24px;
+  }
+  .branded-audience {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    margin-top: 20px;
+  }
+  .branded-btn {
+    position: relative;
+    z-index: 1;
+    background: var(--red);
+    color: var(--paper);
+    border-color: var(--red);
+  }
+  .branded-btn:hover {
+    background: #a33a20;
+    border-color: #a33a20;
+  }
   .deliv-icon {
     width: 40px; height: 40px;
     border: 1px solid var(--border);
@@ -479,9 +593,10 @@
     section { padding: 72px 24px; }
     .hero { padding: 120px 24px 64px; grid-template-columns: 1fr; }
     .hero-right { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
-    .about-grid, .event-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .about-grid, .event-grid, .contact-grid, .branded-grid { grid-template-columns: 1fr; gap: 40px; }
     .packages-grid { grid-template-columns: 1fr; }
     .deliverables-grid { grid-template-columns: 1fr; }
+    .proof-links, .proof-example-list { grid-template-columns: 1fr; }
     .event-sidebar { position: static; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     footer { padding: 32px 24px; }
   }
@@ -570,6 +685,38 @@
       <p class="about-text">
         muShanghai no es solo un programa — es una oportunidad de estar <strong>28 días embedded en el ecosistema tech más dinámico del mundo</strong>, junto a builders que están construyendo el futuro desde China. Quiero llevarte conmigo.
       </p>
+      <div class="proof-strip">
+        <p class="proof-intro">
+          No te estoy prometiendo "algún contenido" algún día. Ya vengo publicando sobre producto, IA y construcción en público. Acá podés ver tono, frecuencia y nivel de ejecución.
+        </p>
+        <div class="proof-links">
+          <a class="proof-link" href="https://www.linkedin.com/posts/tomas-deluca_ai-can-not-only-automate-sales-processes-7312809561537452032-Xa9f?trk=public_profile" target="_blank" rel="noreferrer">
+            <span>LinkedIn público</span>
+            <small>+1.4k seguidores visibles</small>
+          </a>
+          <a class="proof-link" href="https://www.huevsite.studio/en" target="_blank" rel="noreferrer">
+            <span>Huevsite Studio</span>
+            <small>Portfolio vivo y proyectos documentados</small>
+          </a>
+        </div>
+        <div class="proof-examples">
+          <div class="proof-examples-label">Piezas para ver</div>
+          <div class="proof-example-list">
+            <a class="proof-example" href="https://www.linkedin.com/posts/tomas-deluca_ai-can-not-only-automate-sales-processes-7312809561537452032-Xa9f?trk=public_profile" target="_blank" rel="noreferrer">
+              <span>Post sobre AI y procesos comerciales</span>
+              <small>LinkedIn</small>
+            </a>
+            <a class="proof-example" href="https://www.linkedin.com/posts/tomas-deluca_do-vibes-really-work-ive-been-using-this-7312050362771798016-MV1M?trk=public_profile" target="_blank" rel="noreferrer">
+              <span>Post sobre workflows y experimentación</span>
+              <small>LinkedIn</small>
+            </a>
+            <a class="proof-example" href="https://www.huevsite.studio/en" target="_blank" rel="noreferrer">
+              <span>Sitio / portfolio de producto</span>
+              <small>Proyectos y narrativa personal</small>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -659,7 +806,7 @@
     <div class="deliverable">
       <div class="deliv-icon">📢</div>
       <div class="deliv-title">Visibilidad en redes</div>
-      <div class="deliv-desc">Menciones durante el programa en Instagram y TikTok, ante una comunidad tech activa y en crecimiento.</div>
+      <div class="deliv-desc">Reels grabados desde Shanghái, posts en LinkedIn para una audiencia tech de +1.4k seguidores visibles, hilos en X y stories colaborativas con branding del sponsor durante el viaje.</div>
     </div>
     <div class="deliverable">
       <div class="deliv-icon">🎤</div>
@@ -679,9 +826,35 @@
   </div>
 </section>
 
+<section id="contenido-china">
+  <div class="section-label" data-n="04">Contenido en tu nombre desde China</div>
+  <div class="branded-grid">
+    <div>
+      <p class="packages-intro">Te traigo China<br>a tu audiencia.</p>
+      <p style="font-size: 18px; color: var(--muted); max-width: 620px; line-height: 1.7;">
+        Si querés algo más potente que poner el logo en una landing, esta propuesta convierte el viaje en una mini redacción para tu marca. Yo produzco desde Shanghái y vos recibís piezas branded, listas para publicar o co-publicar, con contexto real del ecosistema tech chino.
+      </p>
+      <p class="branded-note">
+        Es sponsorship, sí. Pero con una lógica más ambiciosa: durante 28 días tenés a tu propio corresponsal tech en China.
+      </p>
+      <p class="branded-audience">Ideal para fondos, software, media o marcas que quieran hablar de China con voz propia.</p>
+    </div>
+    <article class="branded-card">
+      <div class="package-badge">Recomendado</div>
+      <ul class="branded-list">
+        <li>4 reels mensuales desde Shanghái con branding del sponsor</li>
+        <li>1 hilo semanal en X sobre el ecosistema tech chino y lo que importa para tu industria</li>
+        <li>2 posts en LinkedIn por mes conectando hallazgos del viaje con tu tesis, producto o categoría</li>
+        <li>Stories colaborativas y mención en bio durante todo el viaje</li>
+      </ul>
+      <a href="#contacto" class="pkg-btn branded-btn">Quiero este formato</a>
+    </article>
+  </div>
+</section>
+
 <!-- PAQUETES -->
 <section id="paquetes">
-  <div class="section-label" data-n="04">Paquetes de sponsorship</div>
+  <div class="section-label" data-n="05">Paquetes de sponsorship</div>
   <p class="packages-intro">Tres formas de<br>acompañar el viaje.</p>
   <div class="packages-grid">
 
@@ -707,7 +880,7 @@
         <li>Todo lo del paquete Aliado</li>
         <li>Intros a 3 fundadores o fondos chinos</li>
         <li>Charla interna para tu equipo (60 min)</li>
-        <li>5 menciones en redes + contenido dedicado</li>
+        <li>1 reel desde Shanghái + 2 posts en LinkedIn + 1 hilo en X + 1 secuencia de stories colaborativas</li>
         <li>Call mensual durante el programa</li>
       </ul>
       <a href="#contacto" class="pkg-btn">Ser Partner</a>
@@ -732,7 +905,7 @@
 
 <!-- CONTACTO -->
 <section id="contacto">
-  <div class="section-label" data-n="05">Contacto</div>
+  <div class="section-label" data-n="06">Contacto</div>
   <div class="contact-grid">
     <div>
       <h2 class="contact-headline">
@@ -757,6 +930,7 @@
           <option value="">Seleccioná un paquete</option>
           <option>Aliado — USD 1.000</option>
           <option>Partner — USD 3.000</option>
+          <option>Contenido en tu nombre desde China</option>
           <option>Sponsor Principal — USD 5.000+</option>
           <option>Quiero charlar primero</option>
         </select>

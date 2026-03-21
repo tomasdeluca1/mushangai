@@ -125,6 +125,40 @@ export function HomePage() {
                 {content.aboutAfter}
               </p>
               <p className="about-text">{content.aboutParagraph2}</p>
+              <div className="proof-strip">
+                <p className="proof-intro">{content.socialProofIntro}</p>
+                <div className="proof-links">
+                  {content.socialLinks.map((link) => (
+                    <a
+                      key={`${language}-${link.label}`}
+                      className="proof-link"
+                      href={link.href}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <span>{link.label}</span>
+                      <small>{link.meta}</small>
+                    </a>
+                  ))}
+                </div>
+                <div className="proof-examples">
+                  <div className="proof-examples-label">{content.contentExamplesLabel}</div>
+                  <div className="proof-example-list">
+                    {content.contentExamples.map((example) => (
+                      <a
+                        key={`${language}-${example.title}`}
+                        className="proof-example"
+                        href={example.href}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <span>{example.title}</span>
+                        <small>{example.meta}</small>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -189,8 +223,37 @@ export function HomePage() {
           </div>
         </section>
 
-        <section id="packages">
+        <section id="china-content">
           <div className="section-label" data-n="04">
+            {content.correspondentSectionLabel}
+          </div>
+          <div className="branded-grid reveal-grid">
+            <div>
+              <h2 className="packages-intro">
+                {content.correspondentIntro[0]}
+                <br />
+                {content.correspondentIntro[1]}
+              </h2>
+              <p className="section-intro">{content.correspondentBody}</p>
+              <p className="branded-note">{content.correspondentNote}</p>
+              <p className="branded-audience">{content.correspondentAudience}</p>
+            </div>
+            <article className="branded-card">
+              <div className="package-badge">{content.recommended}</div>
+              <ul className="branded-list">
+                {content.correspondentDeliverables.map((item) => (
+                  <li key={`${language}-${item}`}>{item}</li>
+                ))}
+              </ul>
+              <a href="#contact" className="pkg-btn branded-btn">
+                {content.correspondentCta}
+              </a>
+            </article>
+          </div>
+        </section>
+
+        <section id="packages">
+          <div className="section-label" data-n="05">
             {content.packagesSectionLabel}
           </div>
           <p className="packages-intro">
@@ -219,7 +282,7 @@ export function HomePage() {
         </section>
 
         <section id="contact">
-          <div className="section-label" data-n="05">
+          <div className="section-label" data-n="06">
             {content.contactSectionLabel}
           </div>
           <div className="contact-grid reveal-grid">
