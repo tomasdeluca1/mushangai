@@ -1,6 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
+  metadataBase: new URL("https://mushanghai.xyz"),
   title: "Tomás Deluca @ muShanghai 2026 | Sponsorship Journey",
   description:
     "Join Tomás Deluca (Huevo) on his 28-day journey to muShanghai 2026, the heart of the Chinese tech ecosystem. Support the mission and get exclusive market insights.",
@@ -14,6 +15,7 @@ export const metadata = {
     siteName: "muShanghai 2026 - Tomás Deluca",
     locale: "es_AR",
     type: "website",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "mushanghai — De Argentina a Alibaba HQ, Shanghai" }],
   },
   alternates: {
     canonical: "https://mushanghai.xyz",
@@ -29,6 +31,7 @@ export const metadata = {
     title: "Tomás Deluca @ muShanghai 2026",
     description: "Sponsorship landing page for Tomás Deluca's muShanghai 2026 journey.",
     creator: "@_huevsite",
+    images: ["/og-image.png"],
   },
   icons: {
     icon: "/favicon.svg",
