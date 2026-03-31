@@ -15,7 +15,7 @@ export const metadata = {
     siteName: "muShanghai 2026 - Tomás Deluca",
     locale: "es_AR",
     type: "website",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "mushanghai — De Argentina a Alibaba HQ, Shanghai" }],
+    images: [{ url: "/og-image.png?v=1", width: 1200, height: 630, alt: "mushanghai — De Argentina a Alibaba HQ, Shanghai" }],
   },
   alternates: {
     canonical: "https://mushanghai.huevsite.com",
@@ -31,7 +31,7 @@ export const metadata = {
     title: "Tomás Deluca @ muShanghai 2026",
     description: "Sponsorship landing page for Tomás Deluca's muShanghai 2026 journey.",
     creator: "@_huevsite",
-    images: ["/og-image.png"],
+    images: ["/og-image.png?v=1"],
   },
   icons: {
     icon: "/favicon.svg",
