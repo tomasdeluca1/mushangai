@@ -58,7 +58,7 @@ export default function RootLayout({ children }) {
       }
     },
     "image": [
-      "https://mushanghai.huevsite.com/opengraph-image"
+      "https://mushanghai.huevsite.com/og-image.png?v=1"
     ],
     "description": "Join Tomás Deluca (Huevo) on his 28-day journey to muShanghai 2026, the heart of the Chinese tech ecosystem.",
     "organizer": {
