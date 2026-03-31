@@ -22,6 +22,22 @@ export function HomePage() {
     window.localStorage.setItem(STORAGE_KEY, language);
   }, [content.htmlLang, language]);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       <nav>
@@ -100,8 +116,11 @@ export function HomePage() {
           <div className="section-label" data-n="01">
             {content.aboutSectionLabel}
           </div>
-          <div className="about-grid reveal-grid">
+          <div className="about-grid reveal">
             <div>
+              <div className="founder-photo">
+                <img src="/founder.jpg" alt="Tomás Deluca" />
+              </div>
               <div className="about-name">
                 Tomás
                 <br />
@@ -117,14 +136,15 @@ export function HomePage() {
               </div>
             </div>
             <div>
+              <blockquote className="about-quote">{content.aboutQuote}</blockquote>
               <p className="about-text">
-                {content.aboutBefore}
-                <a href="https://huevsite.com" target="_blank" rel="noreferrer">
-                  <strong>huevsite.com</strong>
+                {content.aboutStoryBefore}
+                <a href="https://huevsite.io" target="_blank" rel="noreferrer">
+                  <strong>huevsite.io</strong>
                 </a>
-                {content.aboutAfter}
+                {content.aboutStoryAfter}
               </p>
-              <p className="about-text">{content.aboutParagraph2}</p>
+              <p className="about-text about-challenge">{content.aboutChallenge}</p>
               <div className="proof-strip">
                 <p className="proof-intro">{content.socialProofIntro}</p>
                 <div className="proof-links">
@@ -167,7 +187,7 @@ export function HomePage() {
           <div className="section-label" data-n="02">
             {content.programSectionLabel}
           </div>
-          <div className="event-grid reveal-grid">
+          <div className="event-grid reveal">
             <div>
               <h2 className="event-headline">
                 {content.programHeadline[0]}
@@ -207,12 +227,36 @@ export function HomePage() {
           </div>
         </section>
 
-        <section id="value">
+        <section id="results">
           <div className="section-label" data-n="03">
+            {content.resultsSectionLabel}
+          </div>
+          <div className="results-content reveal">
+            <h2 className="results-headline">
+              {content.resultsHeadline[0]}
+              <br />
+              <em>{content.resultsHeadline[1]}</em>
+            </h2>
+            <p className="section-intro">{content.resultsIntro}</p>
+          </div>
+          <div className="results-grid reveal">
+            {content.results.map((item) => (
+              <div className="result-card" key={`${language}-${item.label}`}>
+                <div className="result-metric">{item.metric}</div>
+                <div className="result-label">{item.label}</div>
+                <div className="result-desc">{item.description}</div>
+              </div>
+            ))}
+          </div>
+          <p className="results-note reveal">{content.resultsNote}</p>
+        </section>
+
+        <section id="value">
+          <div className="section-label" data-n="04">
             {content.valueSectionLabel}
           </div>
-          <p className="section-intro">{content.valueIntro}</p>
-          <div className="deliverables-grid">
+          <p className="section-intro reveal">{content.valueIntro}</p>
+          <div className="deliverables-grid reveal">
             {content.deliverables.map((item) => (
               <article className="deliverable" key={`${language}-${item.title}`}>
                 <div className="deliv-icon">{item.icon}</div>
@@ -224,10 +268,10 @@ export function HomePage() {
         </section>
 
         <section id="china-content">
-          <div className="section-label" data-n="04">
+          <div className="section-label" data-n="05">
             {content.correspondentSectionLabel}
           </div>
-          <div className="branded-grid reveal-grid">
+          <div className="branded-grid reveal">
             <div>
               <h2 className="packages-intro">
                 {content.correspondentIntro[0]}
@@ -253,15 +297,15 @@ export function HomePage() {
         </section>
 
         <section id="packages">
-          <div className="section-label" data-n="05">
+          <div className="section-label" data-n="06">
             {content.packagesSectionLabel}
           </div>
-          <p className="packages-intro">
+          <p className="packages-intro reveal">
             {content.packagesIntro[0]}
             <br />
             {content.packagesIntro[1]}
           </p>
-          <div className="packages-grid">
+          <div className="packages-grid reveal">
             {content.packages.map((pkg) => (
               <article className={`package${pkg.featured ? " featured" : ""}`} key={`${language}-${pkg.name}`}>
                 {pkg.featured ? <div className="package-badge">{content.recommended}</div> : null}
@@ -282,10 +326,10 @@ export function HomePage() {
         </section>
 
         <section id="contact">
-          <div className="section-label" data-n="06">
+          <div className="section-label" data-n="07">
             {content.contactSectionLabel}
           </div>
-          <div className="contact-grid reveal-grid">
+          <div className="contact-grid reveal">
             <div>
               <h2 className="contact-headline">
                 {content.contactHeadline[0]}
