@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://mushanghai.huevsite.studio/sitemap.xml",
+    sitemap: "https://mushanghai.huevsite.com/sitemap.xml",
   };
 }

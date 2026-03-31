@@ -197,7 +197,7 @@ export function HomePage() {
                 {content.programHeadline[3]}
               </h2>
               <p className="event-text">
-                <a href="https://mushanghai.huevsite.studio" target="_blank" rel="noreferrer">
+                <a href="https://mushanghai.huevsite.com" target="_blank" rel="noreferrer">
                   muShanghai
                 </a>
                 {content.programTextAfterLink}
