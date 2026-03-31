@@ -1,7 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
-  metadataBase: new URL("https://mushanghai.xyz"),
+  metadataBase: new URL("https://mushanghai.huevsite.studio"),
   title: "Tomás Deluca @ muShanghai 2026 | Sponsorship Journey",
   description:
     "Join Tomás Deluca (Huevo) on his 28-day journey to muShanghai 2026, the heart of the Chinese tech ecosystem. Support the mission and get exclusive market insights.",
@@ -11,18 +11,18 @@ export const metadata = {
   openGraph: {
     title: "Tomás Deluca @ muShanghai 2026 | Sponsorship Journey",
     description: "28 days in Shanghai building the future. Join as a sponsor and get direct access to the Chinese tech ecosystem.",
-    url: "https://mushanghai.xyz",
+    url: "https://mushanghai.huevsite.studio",
     siteName: "muShanghai 2026 - Tomás Deluca",
     locale: "es_AR",
     type: "website",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "mushanghai — De Argentina a Alibaba HQ, Shanghai" }],
   },
   alternates: {
-    canonical: "https://mushanghai.xyz",
+    canonical: "https://mushanghai.huevsite.studio",
     languages: {
-      "en-US": "https://mushanghai.xyz/en",
-      "es-AR": "https://mushanghai.xyz/es",
-      "zh-CN": "https://mushanghai.xyz/zh",
+      "en-US": "https://mushanghai.huevsite.studio/en",
+      "es-AR": "https://mushanghai.huevsite.studio/es",
+      "zh-CN": "https://mushanghai.huevsite.studio/zh",
     },
   },
   manifest: "/manifest.json",
@@ -58,7 +58,7 @@ export default function RootLayout({ children }) {
       }
     },
     "image": [
-      "https://mushanghai.xyz/opengraph-image"
+      "https://mushanghai.huevsite.studio/opengraph-image"
     ],
     "description": "Join Tomás Deluca (Huevo) on his 28-day journey to muShanghai 2026, the heart of the Chinese tech ecosystem.",
     "organizer": {
